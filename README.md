@@ -10,6 +10,8 @@ More than just a Spark. Library with some useful tools to improve web workflow u
 
 ## TODO
 
+-[ ] create nice icon
+
 -[ ] email, exception, sqlambda, Ambiente, GsonTransformer, OracleBoolean and Version are not documented and tested.
 They should be.
 
@@ -32,6 +34,8 @@ They should be.
     </testResources>
 </build>
 ```
+
+- [ ] create nice `github.io` page
 
 ## Documentation
 
