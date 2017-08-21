@@ -18,10 +18,14 @@ Use this to make your API public with no restrictions to whoam access your API.
 #### Usage
 
 ```java
-Cors = new Cors();
-before((req, res) -> {
-    cors.applyCors(res);
-});
+public class CorsExample {
+    public void applyCors() {
+        Cors = new Cors();
+        before((req, res) -> {
+            cors.applyCors(res);
+        });
+    }  
+}
 ```
 
 ### ErrorMessage
@@ -31,14 +35,16 @@ Use this as return to your API on any error
 #### Usage
 
 ```java
-exception(Exception.class, (e, req, res) -> {
-    LOGGER.error("Uknown error: ", e);
-
-    int code = HttpStatus.INTERNAL_SERVER_ERROR_500;
-    res.status(code);
-
-    ErrorMessage error = new ErrorMessage(code, "Internal Server Error");
-    res.type(JSON_UTF_8.toString());
-    res.body(factory.gson().toJson(error, ErrorMessage.class));
-});
+public class ErrorMessageExample {
+    exception(Exception.class, (e, req, res) -> {
+        LOGGER.error("Uknown error: ", e);
+    
+        int code = HttpStatus.INTERNAL_SERVER_ERROR_500;
+        res.status(code);
+    
+        ErrorMessage error = new ErrorMessage(code, "Internal Server Error");
+        res.type(JSON_UTF_8.toString());
+        res.body(factory.gson().toJson(error, ErrorMessage.class));
+    });
+}
 ```
