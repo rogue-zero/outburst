@@ -12,21 +12,25 @@ More than just a Spark. Library with some useful tools to improve web workflow u
 
 -[ ] email, exception, sqlambda, Ambiente, GsonTransformer, OracleBoolean and Version are not documented and tested.
 They should be.
+
 -[ ] data are specific to TST. They should be parametrized. Maybe via something like `Environment.init(param1, param2, ...)`.
--[ ] document the need to add to pom to `Version` to work. See if `test/resources` are really necessary. 
+
+-[ ] document the need to add to pom to `Version` to work. See if `test/resources` are really necessary.
 ```xml
-<resources>
-    <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-    </resource>
-</resources>
-<testResources>
-    <testResource>
-        <directory>src/test/resources</directory>
-        <filtering>true</filtering>
-    </testResource>
-</testResources>
+<build>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>true</filtering>
+        </resource>
+    </resources>
+    <testResources>
+        <testResource>
+            <directory>src/test/resources</directory>
+            <filtering>true</filtering>
+        </testResource>
+    </testResources>
+</build>
 ```
 
 ## Documentation
@@ -42,9 +46,7 @@ Use this to make your API public with no restrictions to whoam access your API.
 public class CorsExample {
     public void applyCors() {
         Cors = new Cors();
-        before((req, res) -> {
-            cors.applyCors(res);
-        });
+        before((req, res) -> cors.applyCors(res));
     }  
 }
 ```
